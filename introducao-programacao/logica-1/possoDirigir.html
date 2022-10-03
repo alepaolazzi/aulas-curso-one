@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<title>Posso Dirigir?</title>
+
+<script>
+  function pulaLinha() {
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulaLinha();
+  }
+
+  var idade = parseInt(prompt("Qual é sua idade?"));
+  var temCarteira = prompt("Tem carteira? 1-SIM, 2-NÃO");
+
+  if (idade < 18 && temCarteira === '2') {
+    document.write('Sua hora vai chegar!');
+    pulaLinha()
+  } else if (idade >= 18 && temCarteira === "2") {
+    document.write('Para dirigir você precisa de carteira de motorista.');
+    pulaLinha();
+  } else if (idade < 18 && temCarteira === '1') {
+    document.write('Como isso é possível? kkk');
+    pulaLinha()
+  } else if (idade >= 18 && temCarteira === '1') {
+    document.write('Você já pode dirigir!');
+    pulaLinha()
+  }
+
+</script>

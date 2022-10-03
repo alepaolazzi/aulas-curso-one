@@ -1,0 +1,42 @@
+<meta charset="UTF-8">
+<h2>Tente acertar o número pensado!</h2>
+<input type="number" max="10" min="0">
+<button>Chutar!</button>
+<h3 class="resposta"></h3>
+
+
+<script>
+  let resposta = document.querySelector('.resposta');
+  let input = document.querySelector('input');
+  let botao = document.querySelector('button');
+
+  botao.addEventListener('click', verifica);
+  input.focus();
+
+  function sorteia(n) {
+    return Math.round(Math.random() * n)
+  }
+
+  let num = Math.round(Math.random() * 10)
+  const numeroAleatorio = sorteia(num)
+
+  function escreve(texto) {
+    resposta.innerHTML = texto
+  }
+
+  function verifica() {
+    console.log(numeroAleatorio)
+    let chute = input.value;
+
+    if (numeroAleatorio == chute) {
+      escreve('Parabéns! O número ' + chute + ' era extamente o que eu tinha pensado!')
+      botao.disabled = true
+    } else if (numeroAleatorio < chute) {
+      escreve('Que pena, você errou! O número que pensei era menor que ' + chute + ".")
+      input.focus();
+    } else if (numeroAleatorio > chute) {
+      escreve('Que pena, você errou! O número que pensei era maior que ' + chute + ".")
+      input.focus();
+    }
+  }
+</script>

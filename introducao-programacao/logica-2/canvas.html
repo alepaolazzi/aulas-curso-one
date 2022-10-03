@@ -1,0 +1,30 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  let tela = document.querySelector('canvas');
+  let pincel = tela.getContext('2d');
+
+  pincel.fillStyle = '#eed';
+  pincel.fillRect(0, 0, 600, 400); //cria e preenche o retângulo
+
+  pincel.fillStyle = '#090';
+  pincel.fillRect(0, 0, 200, 400);
+  pincel.fillStroke = 'black'; // cor da borda
+  pincel.strokeRect(0, 0, 200, 400); // lugar onde a borda começa e termina
+
+  pincel.fillStyle = '#900';
+  pincel.fillRect(400, 0, 200, 400);
+
+  pincel.fillStyle = '#ede';
+  pincel.beginPath(); // novo caminho
+  pincel.moveTo(300, 200); // move onde está o ponto inicial
+  pincel.lineTo(200, 400);
+  pincel.lineTo(400, 400);  // desenha a linha
+  pincel.fill(); // função preencher
+
+  pincel.fillStyle = "#fff";
+  pincel.beginPath()
+  pincel.arc(300, 200, 50, 0, 2 * 3.14) // inicioX, inicioY, raio, angulo inicial, angulo final.
+  pincel.fill();
+
+</script>

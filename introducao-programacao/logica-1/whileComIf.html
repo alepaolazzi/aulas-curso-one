@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<script>
+  function pulaLinha() {
+    document.write('<br>');
+  }
+
+  function escreve(texto) {
+    document.write(texto);
+    pulaLinha()
+  }
+
+  let i = 30;
+
+  while (i <= 40) {
+    if (i === 33 || i === 37) {
+      i++
+    }
+    escreve(i)
+    i++
+  }
+  escreve('Fim')
+</script>

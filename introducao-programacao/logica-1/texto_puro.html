@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+<div id="caixa">
+  <p></p>A convenção que usaremos para criar nosso programa é adotar letras minúsculas e não usar acentos e, claro, usar a extensão .html.</p>
+  <br>
+  <p>Outro ponto importante é que toda alteração feita no arquivo .html deve ser salva e, além disso, o navegador precisa recarregar a página para que a última alteração do arquivo entre em vigor.</p>
+</div>
+<script>
+  let caixa = document.getElementById('caixa')
+  let idade = prompt('Qual é sua idade');
+
+  if (idade < 12) {
+    window.alert('A idade mínima é 12 anos!')
+    caixa.innerHTML = '<h1>Não!</h1>'
+  } else {
+    window.alert('Bem vindo!')
+  }
+</script>

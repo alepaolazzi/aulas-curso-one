@@ -1,0 +1,30 @@
+<canvas width="600" height="400"></canvas><br>
+<h4 style="display: inline-block; margin: 10px 20px;">Escolha uma cor</h4><input type="color" style="margin-top: 10px;">
+
+<script>
+  const tela = document.querySelector('canvas');
+  const input = document.querySelector('input');
+  const pincel = tela.getContext('2d');
+
+  pincel.fillStyle = 'lightgray';
+  pincel.fillRect(0, 0, 600, 400);
+
+  let move = false
+
+  function desenhaCirculo(event) {
+    let x = event.pageX - tela.offsetLeft;
+    let y = event.pageY - tela.offsetTop;
+    console.log(x)
+    let cor = input.value
+    if (move) {
+      pincel.fillStyle = cor;
+      pincel.beginPath();
+      pincel.arc(x, y, 10, 0, 2 * 3.14);
+      pincel.fill();
+    }
+  }
+
+  tela.addEventListener('mousemove', desenhaCirculo)
+  tela.addEventListener('mousedown', () => move = true);
+  tela.addEventListener('mouseup', () => move = false);
+</script>

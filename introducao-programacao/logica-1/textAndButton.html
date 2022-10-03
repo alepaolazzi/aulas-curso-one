@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<input type="number" max="10" min="0">
+<button>Click!</button>
+<h5></h5>
+
+
+<script>
+  let n = Math.round(Math.random() * 10);
+  let input = document.querySelector('input');
+  let botao = document.querySelector('button');
+  let saida = document.querySelector('h5');
+
+  input.focus();
+
+  function verifica() {
+    if (input.value == n) {
+      saida.innerText = 'Você Acertou!';
+    } else {
+      saida.innerText = 'Você Errou!';
+    }
+    input.value = '';
+    input.focus();
+  }
+
+  botao.addEventListener('click', verifica)
+</script>

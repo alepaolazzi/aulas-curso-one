@@ -1,0 +1,72 @@
+<style>
+  canvas {
+    cursor: url(https://cdn.discordapp.com/attachments/808449313973469249/1005287051563909180/cursor.cur), default;
+  }
+</style>
+
+<canvas width="600" height="400"></canvas>
+<h3></h3>
+
+<script>
+  const tela = document.querySelector('canvas');
+  const pincel = tela.getContext('2d');
+  const saida = document.querySelector('h3');
+  pincel.fillStyle = 'white'
+  pincel.fillRect(0, 0, 600, 400);
+  pincel.fillStyle = 'antiquewhite'
+  pincel.strokeRect(0, 0, 600, 400)
+
+  const raio = 10;
+  let posicaoX;
+  let posicaoY;
+
+  function desenhaCirculo(x, y, raio, cor) {
+    pincel.fillStyle = cor;
+    pincel.beginPath();
+    pincel.arc(x, y, raio, 0, 2 * 3.14);
+    pincel.fill();
+  }
+
+  let pontuação = 0;
+
+  function escrevePontuacao(valor) {
+    saida.innerText = `Pontuação: ${valor}`
+  }
+
+  function limpaTela() {
+    pincel.clearRect(0, 0, 600, 400);
+  }
+
+  function desenhaAlvo(x, y) {
+    desenhaCirculo(x, y, raio + 20, 'red')
+    desenhaCirculo(x, y, raio + 10, 'white')
+    desenhaCirculo(x, y, raio, 'red')
+  }
+
+  function posicao(max) {
+    return Math.floor(Math.random() * (max))
+  }
+
+  function attTela() {
+    limpaTela()
+    posicaoX = posicao(600);
+    posicaoY = posicao(400);
+    desenhaAlvo(posicaoX, posicaoY);
+  }
+
+  setInterval(attTela, 800);
+
+  function tiro(event) {
+    let x = event.pageX - tela.offsetLeft;
+    let y = event.pageY - tela.offsetTop;
+
+    if ((x > posicaoX - raio) && (x < posicaoX + raio) && (y > posicaoY - raio) && (y < posicaoY + raio)) {
+      alert(`Acertou`);
+      pontuação += 1;
+      escrevePontuacao(pontuação);
+    }
+  }
+
+  escrevePontuacao(pontuação);
+  tela.addEventListener('click', tiro);
+</script>

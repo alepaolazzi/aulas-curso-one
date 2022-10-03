@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<script>
+  let nome = prompt('Qual é seu nome?')
+  let pesoUser = prompt('Digite seu peso em kg. Ex: 50')
+  let alturaUser = prompt('Digite sua altura em cm. Ex: 1.65')
+
+  function mostra(texto) {
+    document.write(texto)
+  }
+
+  function calculaImc(peso, altura) {
+    return peso / (altura * altura)
+  }
+
+  mostra(nome + ', seu IMC é: ' + Math.round(calculaImc(pesoUser, alturaUser)))
+</script>

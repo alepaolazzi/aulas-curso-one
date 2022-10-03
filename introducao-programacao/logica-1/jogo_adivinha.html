@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<script>
+  function inicio() {
+
+    function escreve(texto) {
+      alert(texto)
+    }
+
+    function sorteia(n) {
+      return Math.round(Math.random() * n)
+    }
+
+    let num = Math.round(Math.random() * 10)
+    const numeroAleatorio = sorteia(num)
+    let i = 2;
+
+    while (i >= 0) {
+      let chute = Number(prompt('Tente acertar o número pensado!'));
+
+      if (i === 0) {
+        escreve('Tentativas Esgotadas! Mais sorte da próxima vez, o número pensado era ' + chute)
+      }
+      if (numeroAleatorio === chute) {
+        escreve('Parabéns! O número ' + chute + ' era extamente o que eu tinha pensado!')
+        break;
+      } else if (numeroAleatorio < chute && i > 0) {
+        escreve('Que pena, você errou! O número que pensei era menor que ' + chute + "." + " Não desista, restam " + i + " tentativas")
+      } else if (numeroAleatorio > chute && i > 0) {
+        escreve('Que pena, você errou! O número que pensei era maior que ' + chute + "." + " Não desista, restam " + i + " tentativas")
+      }
+      i--;
+    }
+  }
+  inicio()
+</script>

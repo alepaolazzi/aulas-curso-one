@@ -1,0 +1,21 @@
+<meta charset="UTF-8">
+<script>
+  function pulaLinha() {
+    document.write("<hr>");
+  }
+  function mostra(resultado) {
+    document.write('<big style="text-align:center"><p>Já se passaram <span style="font-weight:bold">' + resultado + '</span> gerações! </p></big>');
+  }
+
+  function calculaGeracoes(anoAtual) {
+    pulaLinha()
+    const anoInicial = 1500;
+    const mediaIdade = 28;
+    const calculo = (anoAtual - anoInicial) / mediaIdade;
+    const resultadoExato = Math.floor(calculo)
+    mostra(resultadoExato)
+    pulaLinha()
+  }
+
+  calculaGeracoes(2022)
+</script>

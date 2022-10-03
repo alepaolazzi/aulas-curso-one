@@ -1,0 +1,62 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+  const tela = document.querySelector('canvas');
+  const pincel = tela.getContext('2d');
+  pincel.fillStyle = 'white';
+  pincel.fillRect(0, 0, 600, 400);
+  pincel.fillStroke = 'blue';
+  pincel.strokeRect(0, 0, 600, 400)
+
+  let x = 20;
+  let y = 20;
+
+  function desenhaCirculo(x, y, raio) {
+
+    pincel.fillStyle = 'blue';
+    pincel.beginPath();
+    pincel.arc(x, y, raio, 0, 2 * Math.PI);
+    pincel.fill();
+  }
+
+  let taxa = 10;
+
+  const esquerda = 37;
+  const cima = 38;
+  const direita = 39;
+  const baixo = 40;
+
+  function limpaTela() {
+
+    pincel.clearRect(1, 1, 598, 398);
+  }
+
+  function atualizaTela() {
+
+    limpaTela();
+    desenhaCirculo(x, y, 10);
+  }
+
+  /* setInterval(atualizaTela, 20); */
+  function teclaPressionada(event) {
+    let teclaAtual = event.keyCode;
+
+    if (teclaAtual === esquerda) {
+      x -= taxa
+    } else if (teclaAtual === cima) {
+      y -= taxa
+    } else if (teclaAtual === direita) {
+      x += taxa
+    } else if (teclaAtual === baixo) {
+      y += taxa
+    }
+    if (x >= 594 || x <= 6 || y >= 394 || y <= 6) {
+      alert(`Bum!!!`)
+    } else {
+      atualizaTela()
+    }
+  }
+  document.addEventListener('keydown', teclaPressionada)
+
+</script>

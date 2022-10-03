@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<script>
+  function pulaLinha() {
+    document.write('<br>');
+  }
+
+  function escreve(texto) {
+    document.write(texto);
+    pulaLinha()
+  }
+
+  let i = 20;
+
+  while (i >= 0) {
+    escreve('Nº: ' + i)
+    i--
+  }
+  escreve('Fim')
+</script>

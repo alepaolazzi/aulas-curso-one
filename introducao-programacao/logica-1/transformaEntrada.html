@@ -1,0 +1,27 @@
+<!-- <meta charset="UTF-8">
+<script>
+  let idade = Number(prompt('Digite sua Idade'));
+  let idade2 = idade += 10;
+  document.write('Sua idade daqui a 10 anos será ' + idade2)
+</script> -->
+
+<meta charset="UTF-8">
+
+<script>
+  function pulaLinha() {
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulaLinha();
+  }
+
+  var convidados = Number(prompt("Número de convidados"));
+  var vips = Number(prompt("Número de convidados VIP's"));
+
+  var total = convidados + vips;
+
+  mostra("O total de convidados é " + total);
+
+</script>

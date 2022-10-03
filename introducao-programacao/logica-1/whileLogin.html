@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+<title>Login</title>
+<script>
+  let login = 'Alessandro';
+  let senha = '123'
+  let tentativas = 0;
+  let maxTentativas = 3;
+
+  while (tentativas <= maxTentativas) {
+    let loginInformado = prompt('Digite seu login: ');
+    let senhaInformada = prompt('Digite sua senha: ');
+
+    if (loginInformado === login && senhaInformada === senha) {
+      tentativas = maxTentativas;
+      alert('Seja bem-vindo, ' + login)
+    } else {
+      if (tentativas === 3) {
+        alert('Tentativas Esgotadas!');
+      } else {
+        alert('Senha Incorreta. Tente Novamente');
+      }
+    }
+    tentativas++;
+  }
+</script>

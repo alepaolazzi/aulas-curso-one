@@ -1,0 +1,107 @@
+<meta charset="UTF-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+  function desenhaQuadrado(x, y, tamanho, cor) {
+
+    pincel.fillStyle = cor;
+    pincel.fillRect(x, y, tamanho, tamanho)
+    pincel.fill();
+  }
+
+  function desenhaCirculo(x, y, raio, cor) {
+
+    pincel.fillStyle = cor;
+    pincel.beginPath();
+    pincel.arc(x, y, raio, 0, 2 * 3.14);
+    pincel.fill();
+
+  }
+
+  function desenhaTexto(n, posicaoX, posicaoY) {
+    pincel.font = '18px Times New Roman';
+    pincel.fillStyle = 'white';
+    pincel.fillText(n, posicaoX, posicaoY);
+  }
+
+  function desenhaPaletaDeCores() {
+    desenhaQuadrado(xVermelho, yQuadrados, tamanhoQuadrados, 'red');
+    desenhaTexto(1, (xVermelho + 20), yCentro);
+    desenhaQuadrado(xVerde, yQuadrados, tamanhoQuadrados, 'green');
+    desenhaTexto(2, (xVerde + 20), yCentro);
+    desenhaQuadrado(xAzul, yQuadrados, tamanhoQuadrados, 'blue');
+    desenhaTexto(3, (xAzul + 20), yCentro);
+  }
+
+  function lidaComMovimentoDoMouse(evento) {
+    const raio = 10;
+    let x = evento.pageX - tela.offsetLeft;
+    let y = evento.pageY - tela.offsetTop;
+    if (desenha) {
+      if (x > (xVermelho + xVerde + xAzul) + raio || y > tamanhoQuadrados + raio)
+        desenhaCirculo(x, y, raio, corAtual);
+    }
+  }
+
+  function mudaCor(evento) {
+
+    let x = evento.pageX - tela.offsetLeft;
+    let y = evento.pageY - tela.offsetTop;
+
+    if (y > yQuadrados && y < (yQuadrados + tamanhoQuadrados)) {
+      if (x > xVermelho && x < (xVermelho + tamanhoQuadrados)) {
+        corAtual = 'red';
+      } else if (x > xVerde && (x < xVerde + tamanhoQuadrados)) {
+        corAtual = 'green'
+      } else if (x > xAzul && x < (xAzul + tamanhoQuadrados)) {
+        corAtual = 'blue'
+      }
+    }
+  }
+
+  function habilitaDesenhar() {
+
+    desenha = true;
+  }
+
+  function desabilitaDesenhar() {
+
+    desenha = false;
+  }
+
+  function teclaCor(event) {
+    let tecla = event.keyCode;
+    if (tecla === 49) {
+      corAtual = 'red';
+    } else if (tecla === 50) {
+      corAtual = 'green';
+    } else if (tecla === 51) {
+      corAtual = 'blue';
+    }
+  }
+
+  const tela = document.querySelector('canvas');
+  const pincel = tela.getContext('2d');
+  pincel.fillStyle = 'lightgray';
+  pincel.fillRect(0, 0, 600, 400);
+
+  let desenha = false;
+  let corAtual = 'black';
+  let xVermelho = 0;
+  let xVerde = 50;
+  let xAzul = 100;
+  let yQuadrados = 0;
+  let yCentro = 30;
+  let tamanhoQuadrados = 50;
+
+  desenhaPaletaDeCores(); // mostra os quadrados de seleção de cores
+
+  tela.addEventListener('mousemove', lidaComMovimentoDoMouse);
+  tela.addEventListener('mousedown', habilitaDesenhar);
+  tela.addEventListener('mouseup', desabilitaDesenhar);
+  tela.addEventListener('click', mudaCor)
+  document.addEventListener('keydown', teclaCor);
+
+</script>

@@ -1,0 +1,20 @@
+<meta charset="UTF-8">
+<script>
+  function mostra(resultado) {
+    document.write('<h4 style="display:inline">A diferença de idade é: </h4>' + '<h3 style="display:inline; color:green">' + resultado + '</h3>');
+  }
+
+  function diferencaIdade(idade1, idade2) {
+    if (idade1 > idade2) {
+      let resultado1 = idade1 - idade2
+      mostra(resultado1)
+    } else if (idade2 > idade1) {
+      let resultado2 = idade2 - idade1
+      mostra(resultado2)
+    } else {
+      mostra(' ')
+    }
+  }
+
+  diferencaIdade(2, 3)
+</script>

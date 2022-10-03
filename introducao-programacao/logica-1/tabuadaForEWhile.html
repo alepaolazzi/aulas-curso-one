@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script>
+  function pulaLinha() {
+    document.write('<br><br>');
+  }
+
+  function escreve(texto) {
+    document.write(texto);
+    pulaLinha()
+  }
+
+  function tabuada(n) {
+    for (let i = 0; i <= 10; i++) {
+      escreve(i * n);
+    }
+  }
+
+  let valor = Number(prompt('Qual tabuada você quer?'));
+  while (isNaN(valor)) {
+    valor = Number(prompt('Qual tabuada você quer?'));
+  }
+  tabuada(valor)
+</script>

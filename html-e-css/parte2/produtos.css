@@ -1,0 +1,53 @@
+@import url(../style.css);
+
+.produtos {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.produtos li {
+  padding: 45px 20px;
+  border: 5px dotted #000;
+  border-radius: 10px;
+}
+
+.produtos li:last-child:hover {
+  border-color: #ffd700;
+}
+
+.produtos li:hover {
+  border-color: #c0c0c0;
+}
+
+.produtos li:hover img {
+  transform: translateY(-10px);
+  transition: 0.3s ease-in-out;
+}
+
+.produtos li:hover h2 {
+  color: #1e3574;
+  transition: 0.3s;
+}
+
+.produtos li:hover span {
+  color: rgb(214, 184, 15);
+  transform: 0.3s;
+}
+
+.produtos h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.produtos p {
+  font-size: 18px;
+}
+
+.produtos span {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}

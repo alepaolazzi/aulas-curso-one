@@ -1,0 +1,51 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  let tela = document.querySelector('canvas');
+  let pincel = tela.getContext('2d');
+
+  // pinta o canvas
+  pincel.fillStyle = 'lightgray';
+  pincel.fillRect(0, 0, 600, 400);
+
+  // passa as intruções por escrito
+  pincel.font = '18px Times New Roman'
+  pincel.fillStyle = 'black';
+  pincel.fillText('ALT -5 | SHIFT +10', 200, 30);
+
+  let z = 10;
+  function desenhaCirculo(event, cor) {
+    let x = event.pageX - tela.offsetLeft;
+    let y = event.pageY - tela.offsetTop;
+    let shift = event.shiftKey;
+    let alt = event.altKey;
+    pincel.fillStyle = cores[i];
+    pincel.beginPath();
+    // se shift precionado aumenta o tamanho
+    if (shift && alt) {
+      alert('Só é possível selecionar uma tecla');
+    } else if (shift && z < 40) {
+      z += 10;
+    } else if (alt && z > 10) {
+      z -= 5
+    }
+    console.log(z)
+    pincel.arc(x, y, z, 0, 2 * 3.14);
+    pincel.fill()
+  }
+
+  let cores = ['blue', 'red', 'green', 'yellow']
+  let i = 0;
+
+  // percorre a array e retorna ao inicial
+  function mudaCor() {
+    i++
+    if (i >= cores.length) {
+      i = 0;
+    }
+    return false
+  }
+
+  tela.oncontextmenu = mudaCor;
+  tela.addEventListener('click', desenhaCirculo);
+</script>
